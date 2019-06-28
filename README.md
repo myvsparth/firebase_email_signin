@@ -12,19 +12,19 @@
     -   Goto https://console.firebase.google.com/ and add new project. I will share screenshot how it looks so you will get a better idea.
     -   Click on Add Project to add new project in Google Firebase. Then you will find below form
  
-        ![alt text](https://raw.githubusercontent.com/myvsparth/firebase_email_signin/master/screenshots//1.png)
+    ![alt text](https://raw.githubusercontent.com/myvsparth/firebase_email_signin/master/screenshots/1.png)
 
-        ![alt text](https://raw.githubusercontent.com/myvsparth/firebase_email_signin/master/screenshots//2.png)
+    ![alt text](https://raw.githubusercontent.com/myvsparth/firebase_email_signin/master/screenshots/2.png)
 
     -   Give a project name and accept the terms and condition and click on the Create Project. It will take some time to create a new project and redirect you to project overview page.
 
     -   Now, you need to add android app in this project [Please check below screenshot]. You can add new android project from clicking on android icon. You can also add ios project if you want to create ios application for the same.
 
-        ![alt text](https://raw.githubusercontent.com/myvsparth/firebase_email_signin/master/screenshots//3.png)
+        ![alt text](https://raw.githubusercontent.com/myvsparth/firebase_email_signin/master/screenshots/3.png)
 
     -   In Project Overview add android app for that click on the android icon. It will open new form please check below screenshot.
 
-        ![alt text](https://raw.githubusercontent.com/myvsparth/firebase_email_signin/master/screenshots//4.png)
+        ![alt text](https://raw.githubusercontent.com/myvsparth/firebase_email_signin/master/screenshots/4.png)
  
     -   Android package name you will find in the AndroidManifest.xml file in the Android => App => main folder of your project.
     -   App nickname is optional
@@ -53,7 +53,7 @@
 
 3. Now, you need to enable Email/Password Sign In method in firebase. For that you need to go to the Authentication tab and then Signin method tab. From there enable Email/Password sign in method. Please check the screenshot.
 
-        ![alt text](https://raw.githubusercontent.com/myvsparth/firebase_email_signin/master/screenshots//5.png)
+    ![alt text](https://raw.githubusercontent.com/myvsparth/firebase_email_signin/master/screenshots/5.png)
 
     -   You are all done with firebase Setup. Congratulations…. :)
 
@@ -65,7 +65,7 @@
         ```
     -   Please check below screenshot you will get more idea where to add the dependency
 
-        ![alt text](https://raw.githubusercontent.com/myvsparth/firebase_email_signin/master/screenshots//6.png)
+        ![alt text](https://raw.githubusercontent.com/myvsparth/firebase_email_signin/master/screenshots/6.png)
 
     -   Run flutter packages get in terminal OR If you are using Visual Studio Code then after saving file it will automatically runs the flutter packages get command.
 
@@ -118,7 +118,7 @@
  
 6. When you sign up successfully you can check that google firebase store the user detail in server. Please check the screenshot.
 
-    ![alt text](https://raw.githubusercontent.com/myvsparth/firebase_email_signin/master/screenshots//7.png)
+    ![alt text](https://raw.githubusercontent.com/myvsparth/firebase_email_signin/master/screenshots/7.png)
 
 ## NOTE:
 -   PLEASE CHECK OUT GIT REPO FOR FULL SOURCE CODE. YOU NEED TO ADD YOUR google-services.json FILE IN ANDROID => APP FOLDER.
