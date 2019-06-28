@@ -68,7 +68,9 @@
     ```import 'package:firebase_auth/firebase_auth.dart';```
 
     SignUp Programmatically in Google Firebase:
-    ```Future<FirebaseUser> signUp(email, password) async {
+
+    ```
+    Future<FirebaseUser> signUp(email, password) async {
         try {
             FirebaseUser user = await auth.createUserWithEmailAndPassword(
                 email: email, password: password);
@@ -79,11 +81,14 @@
             handleError(e);
             return null;
         }
-    }```
+    }
+    ```
  
 
     SignIn Programmatically in Google Firebase:
-    ```Future<FirebaseUser> signIn(String email, String password) async {
+
+    ```
+    Future<FirebaseUser> signIn(String email, String password) async {
         try {
             FirebaseUser user = await auth.signInWithEmailAndPassword(
                 email: email, password: password);
@@ -98,21 +103,23 @@
             handleError(e);
             return null;
         }
-    }```
+    }
+    ```
  
 6. When you sign up successfully you can check that google firebase store the user detail in server. Please check the screenshot.
 
 
 
 ## NOTE:
-    PLEASE CHECK OUT GIT REPO FOR FULL SOURCE CODE. YOU NEED TO ADD YOUR google-services.json FILE IN ANDROID => APP FOLDER.
+-   PLEASE CHECK OUT GIT REPO FOR FULL SOURCE CODE. YOU NEED TO ADD YOUR google-services.json FILE IN ANDROID => APP FOLDER.
 
-Git Repo: https://github.com/myvsparth/firebase_email_signin
+## Git Repo:
+-   https://github.com/myvsparth/firebase_email_signin
 
 ## Conclusion:
 - Google firebase is very good service provider in terms of data validation, data store, realtime data, push notification. We have only used google firebase for sign in feature. We can do more out of it.
 
 
-For help getting started with Flutter, view our 
+For help getting started with Flutter, view 
 [online documentation](https://flutter.dev/docs), which offers tutorials, 
 samples, guidance on mobile development, and a full API reference.
