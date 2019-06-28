@@ -31,14 +31,18 @@
     -   In step 2 download google-service.json and put in android => App folder of your project
     -   In step 3 you can see you need to configure some dependencies
     -   Project-level build.gradle (<project>/build.gradle): means build.gradle file in Android folder directly
-        ```buildscript {
+        ```
+        buildscript {
         dependencies {
             // Add this line
             classpath 'com.google.gms:google-services:4.2.0'    
-        }```
+        }
+        ```
     -   App-level build.gradle (<project>/<app-module>/build.gradle): means build.gradle file in Android = > App folder
-        ```// Add to the bottom of the file
-        apply plugin: 'com.google.gms.google-services’```
+        // Add to the bottom of the file
+        ```
+        apply plugin: 'com.google.gms.google-services’
+        ```
 
     -   Note: Don’t need to add  implementation 'com.google.firebase:firebase-core:16.0.9' in dependencies
     -   In Step 4 It will try to verify your app. For that you need to run your app once or you can skip this step.
@@ -54,7 +58,9 @@
 4. Get back to the project and Open pubspec.yaml file in the root of the project. Pubspec.yaml is used to define all the dependencies and assets of the project.
 
     -   Add below dependencies and save the file
-        ```firebase_auth:```
+        ```
+        firebase_auth:
+        ```
     -   Please check below screenshot you will get more idea where to add the dependency
 
 
@@ -65,7 +71,9 @@
 
 5. Now, we need to programmatically handle signup and signin in google firebase. For that we create 2 pages login_page.dart and registration_page.dart and signup and signin in both page. I have attached a link of git repo in the bottom of the article, you can take reference from there. Here I will just define signin and signup methods for understanding.
 
-    ```import 'package:firebase_auth/firebase_auth.dart';```
+    ```
+    import 'package:firebase_auth/firebase_auth.dart';
+    ```
 
     SignUp Programmatically in Google Firebase:
 
