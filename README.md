@@ -12,7 +12,7 @@
     -   Goto https://console.firebase.google.com/ and add new project. I will share screenshot how it looks so you will get a better idea.
     -   Click on Add Project to add new project in Google Firebase. Then you will find below form
  
-
+        ![alt text](https://raw.githubusercontent.com/myvsparth/firebase_email_signin/master/screenshots//1.png)
 
     -   Give a project name and accept the terms and condition and click on the Create Project. It will take some time to create a new project and redirect you to project overview page.
 
