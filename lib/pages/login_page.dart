@@ -3,6 +3,7 @@ import 'package:firebase_email_signin/pages/registration_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -11,6 +12,8 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final FirebaseAuth auth = FirebaseAuth.instance;
+  final GoogleSignIn googleSignIn = new GoogleSignIn();
+  bool isGoogleSignIn = false;
   String errorMessage = '';
   String successMessage = '';
   final GlobalKey<FormState> _formStateKey = GlobalKey<FormState>();
@@ -119,8 +122,7 @@ class _LoginPageState extends State<LoginPage> {
                           onPressed: () {
                             if (_formStateKey.currentState.validate()) {
                               _formStateKey.currentState.save();
-                              signIn(_emailId, _password)
-                                  .then((user) {
+                              signIn(_emailId, _password).then((user) {
                                 if (user != null) {
                                   print('Logged in successfully.');
                                   setState(() {
@@ -164,9 +166,40 @@ class _LoginPageState extends State<LoginPage> {
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 18, color: Colors.green),
                 )
-              : Container())
+              : Container()),
+          (!isGoogleSignIn
+              ? RaisedButton(
+                  child: Text('Google Login'),
+                  onPressed: () {
+                    googleSignin(context).then((user) {
+                      if (user != null) {
+                        print('Logged in successfully.');
+                        setState(() {
+                          isGoogleSignIn = true;
+                          successMessage =
+                              'Logged in successfully.\nEmail : ${user.email}\nYou can now navigate to Home Page.';
+                        });
+                      } else {
+                        print('Error while Login.');
+                      }
+                    });
+                  },
+                )
+              : RaisedButton(
+                  child: Text('Google Logout'),
+                  onPressed: () {
+                    googleSignout().then((response) {
+                      if (response) {
+                        setState(() {
+                          isGoogleSignIn = false;
+                          successMessage = '';
+                        });
+                      }
+                    });
+                  },
+                )),
         ],
-      )), 
+      )),
     );
   }
 
@@ -185,6 +218,39 @@ class _LoginPageState extends State<LoginPage> {
       handleError(e);
       return null;
     }
+  }
+
+  Future<FirebaseUser> googleSignin(BuildContext context) async {
+    FirebaseUser currentUser;
+    try {
+      final GoogleSignInAccount googleUser = await googleSignIn.signIn();
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
+      final AuthCredential credential = GoogleAuthProvider.getCredential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+
+      final FirebaseUser user = await auth.signInWithCredential(credential);
+      assert(user.email != null);
+      assert(user.displayName != null);
+      assert(!user.isAnonymous);
+      assert(await user.getIdToken() != null);
+
+      currentUser = await auth.currentUser();
+      assert(user.uid == currentUser.uid);
+      print(currentUser);
+      print("User Name  : ${currentUser.displayName}");
+    } catch (e) {
+      handleError(e);
+    }
+    return currentUser;
+  }
+
+  Future<bool> googleSignout() async {
+    await auth.signOut();
+    await googleSignIn.signOut();
+    return true;
   }
 
   handleError(PlatformException error) {
