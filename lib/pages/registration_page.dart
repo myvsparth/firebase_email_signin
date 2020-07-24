@@ -202,8 +202,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
 
   Future<FirebaseUser> signUp(email, password) async {
     try {
-      FirebaseUser user = await auth.createUserWithEmailAndPassword(
-          email: email, password: password);
+      FirebaseUser user = (await auth.createUserWithEmailAndPassword(
+          email: email, password: password)).user;
       assert(user != null);
       assert(await user.getIdToken() != null);
       return user;
